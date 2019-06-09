@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+
+
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "jpoissonnier.vscode-styled-components",
+    "shinnn.stylelint",
+    "Orta.vscode-jest",
+
+    "ms-vsliveshare.vsliveshare"
+  ]
+}

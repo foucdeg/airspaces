@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "components/*": ["src/components/*"],
+      "__fixtures__/*": ["src/__fixtures__/*"],
+      "__mocks__/*": ["src/__mocks__/*"],
+      "redux/*": ["src/redux/*"],
+      "routes": ["src/routes"],
+      "services/*": ["src/services/*"],
+      "stylesheet": ["src/stylesheet"],
+      "translations/*": ["src/translations/*"]
+    }
+  }
+}

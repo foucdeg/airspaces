@@ -1,0 +1,6 @@
+{{#unless wantConnect}}
+export { default } from './{{ properCase name }}';
+{{/unless}}
+{{#if wantConnect}}
+export { default } from './{{ properCase name }}.wrap';
+{{/if}}

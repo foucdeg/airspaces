@@ -1,0 +1,30 @@
+{
+  "header": {
+    "login": "Login",
+    "logout": "Log Out"
+  },
+  "home": {
+    "use-a-link": "Or use a link",
+    "get-started": "To get started, edit",
+    "save-to-reload": "and save to reload.",
+    "create-route": "To create a route, edit routes.js and link it to a page",
+    "generate-component": "To create a page or a simple component, run: ",
+    "generate-module": "To add business logic, add a file in ./redux with your reducers/actions/sagas/selectors/constants/...",
+    "click-me": "Click me",
+    "readme": "Look at the README.md to discover the awesome npm commands we added"
+  },
+  "page": {
+    "back": "Back",
+    "api-to-translate-example": "This message is translated using directly react-intl API",
+    "fetch-github-avatar": "Show github avatar",
+    "add-github-username": "Enter a github username"
+  },
+  "login": {
+    "title": "Launch your Theodo project in seconds",
+    "login-button": "Connexion",
+    "email": "Email",
+    "email-placeholder": "ex: comes@theodo.fr",
+    "password": "Password",
+    "password-placeholder": "xxxxxxxxxxx"
+  }
+}
