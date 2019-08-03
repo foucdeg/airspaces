@@ -1,7 +1,7 @@
 import jwt_decode from 'jwt-decode';
 import request from 'superagent';
 
-const backendBaseUrl = process.env.REACT_APP_API_BASE_URL || '';
+const backendBaseUrl = process.env.REACT_APP_API_BASE_URL || '/api';
 
 interface AccessToken {
   exp: number;
@@ -48,7 +48,7 @@ class Client {
       promise = promise.set('Authorization', `Bearer ${token}`);
     }
 
-    if (['post', 'put', 'patch'].includes(method) && data) {
+    if (['post', 'put', 'patch'].indexOf(method) > -1 && data) {
       promise = promise.send(data);
     }
 

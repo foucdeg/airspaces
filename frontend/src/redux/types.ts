@@ -1,8 +1,9 @@
-import { AvatarAction, AvatarState } from './Avatar';
-import { LoginAction, LoginState } from './Login';
+import { PlanesState } from './Planes';
+import { LayersState } from './Layers';
+import { ActivePlaneState } from './ActivePlane';
 
 export type RootState = Readonly<{
-  avatar: AvatarState;
-  login: LoginState;
+  planes: PlanesState;
+  layers: LayersState;
+  activePlane: ActivePlaneState;
 }>;
-export type RootAction = AvatarAction | LoginAction;

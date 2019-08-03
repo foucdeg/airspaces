@@ -5,12 +5,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="theme-color" content="#000000">
+  <title>Airspaces</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" crossorigin=""/>
+  <link rel="shortcut icon" href="favicon.png" />
   <!--
       manifest.json provides metadata used when your web app is added to the
       homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
     -->
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
-  <link rel="shortcut icon" href="%PUBLIC_URL%/favicon-<%= process.env.REACT_APP_ENV %>.png" />
   <link href="https://fonts.googleapis.com/css?family=Lato:regular,300" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="%PUBLIC_URL%/reset.css">
   <!--
@@ -22,7 +24,6 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-  <title>Seed</title>
 </head>
 
 <body>
@@ -31,6 +32,8 @@
   </noscript>
   <div id="root"></div>
   <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALMYSbib0J3i5xU5NUt4XPPzHX1Ll90u4"></script>
+
   <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -41,6 +44,16 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+  <script type="text/javascript">
+    (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+}, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+    ga('create', 'UA-109852306-1', 'auto');
+    ga('send', 'pageview');
+  </script>
 </body>
 
 </html>

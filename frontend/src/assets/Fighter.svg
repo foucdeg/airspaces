@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="300px" height="300px" viewBox="0 0 300 300" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>Slice 3</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Fighter" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" transform="translate(126.000000, 78.000000)" fill="#000000">
+            <polygon id="Rectangle" points="0 20.8276393 24 0.695950942 24 172.304049 0 152.172361"></polygon>
+            <polygon id="Rectangle" transform="translate(36.000000, 87.005438) scale(-1, 1) translate(-36.000000, -87.005438) " points="24 21.3330772 48 1.20138889 48 172.809487 24 152.677799"></polygon>
+        </g>
+        <polygon id="Rectangle-2" fill="#000000" points="141.97055 47 158.02945 47 162 96 138 96"></polygon>
+        <polygon id="Triangle" fill="#000000" points="150 27 158 47 142 47"></polygon>
+        <g id="Group-2" transform="translate(59.000000, 112.000000)" fill="#000000">
+            <polygon id="Rectangle-3" points="91 0.193702276 182 77.2947476 182 98.9358664 91 126.183747"></polygon>
+            <polygon id="Rectangle-3" transform="translate(45.500000, 62.995022) scale(-1, 1) translate(-45.500000, -62.995022) " points="0 0 91 77.1010453 91 98.7421641 0 125.990044"></polygon>
+        </g>
+        <polygon id="Rectangle-4" fill="#000000" points="150 187 186 228.71511 186 269 150 236.29215"></polygon>
+        <polygon id="Rectangle-4" fill="#000000" transform="translate(132.000000, 228.000000) scale(-1, 1) translate(-132.000000, -228.000000) " points="114 187 150 228.71511 150 269 114 236.29215"></polygon>
+        <polygon id="Rectangle-5" fill="#000000" points="94 245.523183 115 228 115 269 94 262.464649"></polygon>
+        <polygon id="Rectangle-5" fill="#000000" points="207 246.235026 186 229 186 270 207 263.176492"></polygon>
+        <path d="M55.0237767,185.130579 C100.743653,148.104277 122.899082,129.591126 121.490065,129.591126 C121.490065,129.591126 121.490065,118.253075 121.490065,95.5769749 L135.764071,83.7285339 L138.632297,44.5620983 L149.958935,18.9880084 L161,44.5620983 L164.471731,83.7285339 L178.756572,95.5769749 L178.756572,129.591126 L246.097348,189.114529 L246.097348,213.662263 L194.641625,228.765352 L212.692763,245.822317 L212.692763,264.490279 L187.15267,274.083688 L158.261511,249.478356 L149.958935,256.361706 L141,249.478356 L114.514525,274.083688 L89.3826226,264.490279 L89.3826226,245.822317 L106.737114,228.765352 L55.0237767,213.662263 L55.0237767,185.130579 Z" id="Path-2" stroke="#FFFFFF" stroke-width="10"></path>
+    </g>
+</svg>

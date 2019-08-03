@@ -86,7 +86,6 @@ export const getSpacing = (multiplier: number): string =>
 // Material UI - theme, do not declare constant inside this object
 export const muiTheme = createMuiTheme({
   typography: {
-    useNextVariants: true,
     h2: {
       fontSize: fontSize.XXLarge,
     },

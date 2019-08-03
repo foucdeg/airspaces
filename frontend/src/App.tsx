@@ -12,7 +12,7 @@ import { muiTheme } from 'stylesheet';
 
 import AppCrashFallback from './components/AppCrashFallback';
 import ErrorBoundary from './components/ErrorBoundary';
-import Root from './components/Root';
+import Root from 'components/Root';
 import Routes, { PATHS } from './routes';
 
 interface Props {
@@ -30,13 +30,11 @@ const RootComponentWithRoutes: React.FunctionComponent = () => (
 const App: React.FunctionComponent<Props> = ({ history, persistor, store }) => (
   <ErrorBoundary FallbackComponent={AppCrashFallback}>
     <Provider store={store}>
-      <MuiThemeProvider theme={muiTheme}>
-        <PersistGate loading={null} persistor={persistor}>
-          <ConnectedRouter history={history}>
-            <Route path={PATHS.HOME} component={RootComponentWithRoutes} />
-          </ConnectedRouter>
-        </PersistGate>
-      </MuiThemeProvider>
+      <PersistGate loading={null} persistor={persistor}>
+        <ConnectedRouter history={history}>
+          <Route path={PATHS.HOME} component={RootComponentWithRoutes} />
+        </ConnectedRouter>
+      </PersistGate>
     </Provider>
   </ErrorBoundary>
 );

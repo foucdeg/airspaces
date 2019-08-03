@@ -1,1 +1,1 @@
-export { default } from './Home.wrap';
+export { default } from './Home';

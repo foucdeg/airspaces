@@ -35,6 +35,7 @@
   },
   "rules": {
     "prettier/prettier": "error",
+    "no-unused-vars": "warning",
     "import/extensions": 0,
     "import/no-extraneous-dependencies": 0,
     "import/no-unresolved": 0,
