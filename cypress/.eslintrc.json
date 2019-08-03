@@ -1,0 +1,14 @@
+{
+"extends": "airbnb-base",
+"rules": {
+    "radix": "off",
+    "object-curly-newline": "off",
+    "no-plusplus": "off"
+},
+"plugins": [
+"cypress"
+],
+    "env": {
+    "cypress/globals": true
+    }
+}
