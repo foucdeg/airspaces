@@ -1,11 +1,12 @@
 /* eslint no-console: "off" */
-const express = require('express');
-const mapValues = require('lodash/mapValues');
-const pick = require('lodash/pick');
-const bodyParser = require('body-parser');
-const http = require('http');
+import express from 'express';
+import mapValues from 'lodash/mapValues';
+import pick from 'lodash/pick';
+import bodyParser from 'body-parser';
+import http from 'http';
+import { PlaneList } from 'src/main';
 
-const headers = (req, res, next) => {
+const headers = (req: express.Request, res: express.Response, next: () => void) => {
   res.setHeader('Content-Type', 'application/json');
   res.setHeader('Cache-Control', 'no-store');
 
@@ -17,15 +18,18 @@ const headers = (req, res, next) => {
   next();
 };
 
-const formatPlaneData = planeList => mapValues(
-  planeList,
-  item => pick(item, ['name', 'altitude', 'longitude', 'latitude', 'speed', 'heading', 'icon']),
-);
+const formatPlaneData = (planeList: PlaneList) =>
+  mapValues(planeList, item =>
+    pick(item, ['name', 'altitude', 'longitude', 'latitude', 'speed', 'heading', 'icon']),
+  );
 
 class MapServer {
-  constructor(planeList) {
+  planeList: PlaneList;
+  app: express.Application;
+  server: http.Server | null = null;
+
+  constructor(planeList: PlaneList) {
     this.planeList = planeList;
-    this.sockets = {};
     this.app = express();
 
     this.app.use('/api', bodyParser.json());
@@ -50,16 +54,14 @@ class MapServer {
       this.planeList[req.body.ip].icon = req.body.icon;
       return res.sendStatus(201);
     });
-
-    this.listening = false;
   }
 
-  listen(port) {
+  listen(port: number) {
     this.server = http.createServer(this.app);
-    this.server.listen(port, null, null, () => {
+    this.server.listen(port, undefined, undefined, () => {
       console.log(`Map server now listening on port ${port}`);
     });
   }
 }
 
-module.exports = MapServer;
+export default MapServer;

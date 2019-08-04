@@ -1,20 +1,12 @@
 {
   "parser": "@typescript-eslint/parser",
-  "extends": [
-    "plugin:@typescript-eslint/recommended",
-    "react-app",
-    "prettier",
-    "prettier/@typescript-eslint",
-    "prettier/react"
-  ],
+  "extends": ["plugin:@typescript-eslint/recommended", "prettier", "prettier/@typescript-eslint"],
   "plugins": [
     "import",
     "jest",
-    "jsx-a11y",
     "mysticatea",
     "prefer-object-spread",
     "prettier",
-    "react",
     "@typescript-eslint"
   ],
   "env": {
@@ -25,14 +17,6 @@
     "mocha": true,
     "node": true
   },
-  "globals": {
-    "alert": true,
-    "document": true,
-    "localStorage": true,
-    "navigator": true,
-    "window": true,
-    "HTMLElement": true
-  },
   "rules": {
     "prettier/prettier": "error",
     "no-unused-vars": 1,
@@ -42,12 +26,6 @@
     "import/prefer-default-export": 0,
     "mysticatea/no-useless-rest-spread": "error",
     "prefer-object-spread/prefer-object-spread": 2,
-    "react/destructuring-assignment": 0,
-    "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
-    "react/no-array-index-key": 2,
-    "react/prefer-stateless-function": 0,
-    "react/prop-types": 0,
-    "react/require-default-props": 0,
     "@typescript-eslint/explicit-function-return-type": 0,
     "@typescript-eslint/explicit-member-accessibility": 0,
     "@typescript-eslint/camelcase": 0
