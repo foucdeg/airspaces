@@ -1,0 +1,49 @@
+---
+- hosts: all
+  tasks:
+  - name: include airspaces
+    include_vars: vars/airspaces.yml
+
+  - name: Prepare nginx config
+    become: yes
+    template:
+      src: templates/nginx_conf.j2
+      dest: /etc/nginx/sites-available/{{ item.name }}.airspaces.conf
+    with_items: "{{ airspaces }}"
+
+  - name: Link nginx config
+    become: yes
+    file:
+      src: /etc/nginx/sites-available/{{ item.name }}.airspaces.conf
+      dest: /etc/nginx/sites-enabled/{{ item.name }}.airspaces.conf
+      state: link
+    with_items: "{{ airspaces }}"
+
+  - name: Reload nginx
+    become: yes
+    service:
+      name: nginx
+      state: reloaded
+
+  - name: Make sure dockers are running
+    docker_container:
+      name: "airspace_{{ item.name }}"
+      image: foucdeg/airspaces:api
+      state: started
+      ports:
+        - "{{ item.web_port }}:9000"
+        - "{{ item.udp_port }}:49003/udp"
+    with_items: "{{ airspaces }}"
+
+  - name: include OVH credentials
+    include_vars: vars/ovh-credentials.yml
+
+  - name: Set relevant DNS records
+    ovh_dns:
+      state: present
+      domain: "airspaces.app"
+      name: "{{ item.name }}"
+      value: 51.255.40.71
+    with_items: "{{ airspaces }}"
+    environment: "{{ ovh_credentials }}"
+
