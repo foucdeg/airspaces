@@ -73,7 +73,7 @@ class UDPListener {
 
     this.server.on('message', (msg, rinfo) => {
       const data = UDPListener.readMessage(msg);
-      if (!data) return;
+      if (!data || !data.transponder) return;
       const identifier = `${data.transponder || 'No XPNDR'} (${rinfo.address})`;
       this.updatePosition(identifier, data);
     });

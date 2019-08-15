@@ -8,10 +8,8 @@ export function* fetchNotamsSaga() {
   const endpoint = `/notams`;
   try {
     const response = yield call([client, client.get], endpoint);
-    console.log(response);
     yield put(receiveNotams(response));
   } catch (error) {
-    console.error(error);
     yield put(rejectNotams(error.message));
   }
 }
