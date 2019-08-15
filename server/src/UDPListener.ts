@@ -2,7 +2,7 @@
 import dgram from 'dgram';
 import geolib from 'geolib';
 import last from 'lodash/last';
-import { PlaneList, PlaneData } from 'src/main';
+import { PlaneList, PlaneData } from 'main';
 
 const HISTORY_DURATION = 5000;
 

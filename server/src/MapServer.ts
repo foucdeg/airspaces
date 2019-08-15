@@ -5,7 +5,7 @@ import pick from 'lodash/pick';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import http from 'http';
-import { PlaneList } from 'src/main';
+import { PlaneList } from 'main';
 import notams from './notams';
 
 const headers = (req: express.Request, res: express.Response, next: () => void) => {

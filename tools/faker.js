@@ -1,17 +1,17 @@
-const dgram = require('dgram');
+const dgram = require("dgram");
 
 const ip = process.env.TARGET_IP;
 const port = process.env.TARGET_PORT || 49003;
 
 let i = 0;
 const lonOffset = 4 * Math.random();
-const socket = dgram.createSocket('udp4');
+const socket = dgram.createSocket("udp4");
 
 function generateCoordinates(index) {
   return {
     longitude: lonOffset + 4 * Math.cos(index / 4000.0),
     latitude: 45 + 2 * Math.sin(index / 4000.0),
-    altitude: 20000 * (1 + Math.sin(index / 400.0)),
+    altitude: 20000 * (1 + Math.sin(index / 400.0))
   };
 }
 
@@ -20,7 +20,7 @@ function sendDatagram() {
   const { longitude, latitude, altitude } = generateCoordinates(i);
 
   const startBuffer = Buffer.from([68, 65, 84, 65, 60, 20, 0, 0, 0]);
-  const endBuffer = Buffer.from([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+  const endBuffer = Buffer.from(Array(20).fill(0));
 
   const latBuffer = Buffer.alloc(4);
   latBuffer.writeFloatLE(latitude);
@@ -31,7 +31,22 @@ function sendDatagram() {
   const altBuffer = Buffer.alloc(4);
   altBuffer.writeFloatLE(altitude);
 
-  const finalBuffer = Buffer.concat([startBuffer, latBuffer, lonBuffer, altBuffer, endBuffer]);
+  const startTransponderBuffer = Buffer.from([104, 0, 0, 0, 0, 0, 0, 0]);
+  const endTransponderBuffer = Buffer.from(Array(24).fill(0));
+
+  const transponderBuffer = Buffer.alloc(4);
+  transponderBuffer.writeFloatLE(4242);
+
+  const finalBuffer = Buffer.concat([
+    startBuffer,
+    latBuffer,
+    lonBuffer,
+    altBuffer,
+    endBuffer,
+    startTransponderBuffer,
+    transponderBuffer,
+    endTransponderBuffer
+  ]);
   socket.send(finalBuffer, port, ip);
 }
 
