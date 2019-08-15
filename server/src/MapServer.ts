@@ -52,18 +52,18 @@ class MapServer {
     });
 
     this.app.post('/api/rename', (req, res) => {
-      if (!(req.body.name && req.body.ip && this.planeList[req.body.ip])) {
+      if (!(req.body.name && req.body.identifier && this.planeList[req.body.identifier])) {
         return res.sendStatus(400);
       }
-      this.planeList[req.body.ip].name = req.body.name;
+      this.planeList[req.body.identifier].name = req.body.name;
       return res.sendStatus(201);
     });
 
     this.app.post('/api/change-icon', (req, res) => {
-      if (!(req.body.icon && req.body.ip && this.planeList[req.body.ip])) {
+      if (!(req.body.icon && req.body.identifier && this.planeList[req.body.identifier])) {
         return res.sendStatus(400);
       }
-      this.planeList[req.body.ip].icon = req.body.icon;
+      this.planeList[req.body.identifier].icon = req.body.icon;
       return res.sendStatus(201);
     });
   }
