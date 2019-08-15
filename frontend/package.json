@@ -43,7 +43,8 @@
     "generate": "plop --plopfile scripts/generators/index.js",
     "lint": "eslint 'src/**/*.{js,ts,tsx}'",
     "lint:fix": "eslint 'src/**/*.{js,ts,tsx}' --fix",
-    "lint-style": "stylelint 'src/**/*.style.{ts,tsx}' 'src/**/style.{ts,tsx}'"
+    "lint-style": "stylelint 'src/**/*.style.{ts,tsx}' 'src/**/style.{ts,tsx}'",
+    "deploy": "shipit vps deploy"
   },
   "browserslist": [
     ">0.2%",
@@ -126,6 +127,10 @@
     "react-app-rewired": "2.1.0",
     "react-test-renderer": "16.6.3",
     "redux-saga-test-plan": "^4.0.0-beta.2",
+    "shipit": "^1.2.0",
+    "shipit-cli": "^4.1",
+    "shipit-deploy": "^5.0.0",
+    "shipit-yarn": "^0.2.0",
     "stylelint": "^9.10.1",
     "stylelint-config-prettier": "^4.0.0",
     "stylelint-config-standard": "^18.2.0",
