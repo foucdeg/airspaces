@@ -1,0 +1,145 @@
+---
+title: Home | Airspaces
+layout: default
+---
+
+{% assign mac_url = '' %}
+{% assign win_url = '' %}
+{% assign lin_url = '' %}
+{% for asset in site.github.latest_release.assets %}
+    {% unless asset.name contains 'blockmap' %}
+        {% if asset.name contains 'dmg' %}
+                {% assign mac_url = asset.browser_download_url %}
+        {% endif %}
+        {% if asset.name contains 'exe' %}
+            {% assign win_url = asset.browser_download_url %}
+        {% endif %}
+        {% if asset.name contains 'AppImage' %}
+            {% assign lin_url = asset.browser_download_url %}
+        {% endif %}
+    {% endunless %}
+{% endfor %}
+<h2>Airspaces is an online (or desktop) map for viewing single- or multiplayer flight sessions.</h2>
+
+<h3>Choose your Airspace version</h3>
+<div class="versions">
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th onclick="document.getElementById('instructions-public').scrollIntoView(true)">Public Online</th>
+        <th onclick="document.getElementById('instructions-private').scrollIntoView(true)">Private Online</th>
+        <th onclick="document.getElementById('instructions-self-hosted').scrollIntoView(true)">Self-Hosted</th>
+        <th onclick="document.getElementById('instructions-desktop').scrollIntoView(true)">Desktop (legacy)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Fly with the whole world</td>
+        <td class="ok">&#10004;</td>
+        <td class="ko">&#10005;</td>
+        <td class="ko">&#10005;</td>
+        <td class="ko">&#10005;</td>
+      </tr>
+      <tr>
+        <td>Fly with your friends</td>
+        <td class="ko">&#10005;</td>
+        <td class="ok">&#10004;</td>
+        <td class="ok">&#10004;</td>
+        <td class="ok">&#10004;</td>
+      </tr>
+      <tr>
+        <td>Some customizations</td>
+        <td class="ko">&#10005;</td>
+        <td class="ok">&#10004;</td>
+        <td class="ko">&#10005;</td>
+        <td class="ko">&#10005;</td>
+      </tr>
+      <tr>
+        <td>Will be receiving new features</td>
+        <td class="ok">&#10004;</td>
+        <td class="ok">&#10004;</td>
+        <td class="ok">&#10004;</td>
+        <td class="ko">&#10005;</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="instructions" id="instructions-public">
+  <h3>🔧 Public online Airspace: setting up</h3>
+  <p><a href="/XPlaneConfig.html" target="_blank">Configure X-Plane</a> to export UDP data line 20
+  to the IP <strong>51.255.40.71</strong> and port <strong>49003</strong>.</p>
+  <p>Head to <a href="https://public.airspaces.app" onClick="ga('send', 'event', { eventCategory: 'download', eventAction: 'accessed_online', eventLabel: 'public' });">the public Airspace</a>.
+  You should see your aircraft there!</p>
+</div>
+<div class="instructions" id="instructions-private">
+  <h3>📨 Private online Airspace: Contact me</h3>
+  <p>Let me host your private Airspace for yourself and your friends. Its URL will look like &lt;your-name&gt;.airspaces.app.</p>
+  <p>Some customizations can be requested, such as:</p>
+  <ul>
+    <li>your custom aircraft icons</li>
+    <li>your custom map background or features</li>
+    <li>feel free to ask for anything else, it might be easy for me to do.</li>
+    </ul>
+  <p>Prices start at 5 EUR monthly .
+    Email me at <a href="mailto:foucauld.degeorges@gmail.com">foucauld.degeorges@gmail.com</a> if interested.
+  </p>
+</div>
+<div class="instructions" id="instructions-self-hosted">
+  <h3 💪>Self-host an Airspace</h3>
+  <p>The easiest way to self-host an Airspace is to run the <a href="https://hub.docker.com/r/foucdeg/airspaces">Docker image</a>:</p>
+  <pre>docker run -d -p "9000:9000" -p "49003:49003/udp" foucdeg/airspaces</pre>
+  <p>The Airspaces API will be available on port <strong>9000</strong> and the X-Plane port is <strong>49003</strong>.
+    The client will soon be integrated in the Docker image; for now, you can build it from <a href="https://github.com/foucdeg/x-plane-map-client" target="_blank">its Github repository</a>.<p>
+  <p>If you cannot use Docker, you can run the <a href="https://github.com/foucdeg/x-plane-map-api" target="_blank">Node.js backend</a>
+    and serve the <a href="https://github.com/foucdeg/x-plane-map-client" target="_blank">ReactJS client</a>
+    in your own preferred way, as they are both open source.</a>
+  </p>
+</div>
+<div class="instructions" id="instructions-desktop">
+  <h3 🖥>Download Desktop Airspaces</h3>
+  <p>Be advised that this desktop version of Airspaces will no longer receive new features, as it is costly and harder to maintain for me.</p>
+  <p>Download desktop Airspaces for
+    <a href="{{ mac_url }}" onClick="ga('send', 'event', { eventCategory: 'download', eventAction: 'download_mac', eventLabel: '{{ site.github.latest_release.tag_name }}' });">Mac</a>,
+    <a href="{{ win_url }}" onClick="ga('send', 'event', { eventCategory: 'download', eventAction: 'download_win', eventLabel: '{{ site.github.latest_release.tag_name }}' });">Windows</a> or
+    <a href="{{ lin_url }}" onClick="ga('send', 'event', { eventCategory: 'download', eventAction: 'download_lin', eventLabel: '{{ site.github.latest_release.tag_name }}' });">Linux</a>.</p>
+</div>
+
+<h3>Support</h3>
+
+<p>If you cannot get the map to work, email me at <a href="mailto:foucauld.degeorges@gmail.com">foucauld.degeorges@gmail.com</a>.</p>
+
+</p>For any bug reports, leave an <a target="_blank" href="https://github.com/foucdeg/x-plane-map-electron/issues">issue on Github</a>.</p>
+
+<h3>Helping out</h3>
+
+<p>Thanks for your interest! I gladly accept any help:</p>
+
+<ul>
+  <li>by sending me some feedback or ideas via <a target="_blank" href="mailto:foucauld.degeorges@gmail.com">email</a>
+    or <a target="_blank" href="https://github.com/foucdeg/x-plane-map-electron/issues">Github issue</a>,
+  </li>
+  <li>if you have coding skills, by contributing with code on Github:
+    <ul>
+      <li><a href="https://github.com/foucdeg/x-plane-map-client" target="_blank">Client repository (ReactJS)</a></li>
+      <li><a href="https://github.com/foucdeg/x-plane-map-api" target="_blank">Server repository (NodeJS)</a></li>
+    </ul>
+  </li>
+  <li>by contributing with any amount of money to my development costs (mainly application certificates and server costs):
+    <ul>
+      <li>either a one-time donation using the PayPal button below,</li>
+      <li>or a monthly sponsorship on <a href="https://www.patreon.com/foucauld" target="_blank">Patreon</a>.
+    </ul>
+  </li>
+</ul>
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_donations" />
+<input type="hidden" name="business" value="32RBLTRY2Q8CL" />
+<input type="hidden" name="item_name" value="Airspaces" />
+<input type="hidden" name="currency_code" value="EUR" />
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" style="margin-top: 18px;" />
+<img src="https://www.paypal.com/en_FR/i/scr/pixel.gif" width="1" height="1" />
+</form>
+
+

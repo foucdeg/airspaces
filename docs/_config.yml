@@ -1,0 +1,10 @@
+title: Airspaces
+description: An online map for your X-Plane flight sessions
+google_analytics: UA-109852306-1
+repository: foucdeg/x-plane-map-electron
+url: "https://airspaces.app"
+plugins:
+- jekyll-github-metadata
+- jekyll-sitemap
+- jemoji
+- jekyll-sitemap
