@@ -14,8 +14,17 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "preserve",
-    "lib": ["dom", "dom.iterable", "esnext"]
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ]
   },
-  "exclude": ["node_modules", "shipitfile.js"],
-  "include": ["src"]
+  "exclude": [
+    "node_modules",
+    "shipitfile.js"
+  ],
+  "include": [
+    "src"
+  ]
 }

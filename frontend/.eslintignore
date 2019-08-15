@@ -1,2 +1,3 @@
 src/registerServiceWorker.js
 *.snapshot.test.js
+shipitfile.js

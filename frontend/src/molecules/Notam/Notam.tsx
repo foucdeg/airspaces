@@ -18,6 +18,7 @@ const Notam: React.FC<Props> = ({ notam, onClose }) => (
       horizontal: 'center',
     }}
     open={true}
+    ClickAwayListenerProps={{ onClickAway: () => null }}
     onClose={() => onClose(notam.id)}
   >
     <StyledSnackbarContent
