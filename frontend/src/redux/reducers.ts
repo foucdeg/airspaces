@@ -9,6 +9,7 @@ import { combineReducers, Reducer } from 'redux';
 import { reducer as planes } from './Planes';
 import { reducer as layers } from './Layers';
 import { reducer as activePlane } from './ActivePlane';
+import { reducer as notams } from './Notams';
 import { RootState } from './types';
 
 /**
@@ -25,6 +26,7 @@ export default function createReducer(asyncReducers: {
     ...asyncReducers,
     planes,
     activePlane,
+    notams,
     layers,
   });
 }

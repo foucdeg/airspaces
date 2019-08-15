@@ -3,8 +3,10 @@ import express from 'express';
 import mapValues from 'lodash/mapValues';
 import pick from 'lodash/pick';
 import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
 import http from 'http';
 import { PlaneList } from 'src/main';
+import notams from './notams';
 
 const headers = (req: express.Request, res: express.Response, next: () => void) => {
   res.setHeader('Content-Type', 'application/json');
@@ -33,10 +35,20 @@ class MapServer {
     this.app = express();
 
     this.app.use('/api', bodyParser.json());
+    this.app.use('/api', cookieParser());
     this.app.use('/api', headers);
 
     this.app.get('/api/data', (req, res) => {
       res.send(JSON.stringify(formatPlaneData(this.planeList)));
+    });
+
+    this.app.get('/api/notams', (req, res) => {
+      const lastSeenNotam = parseInt(req.cookies.lastSeenNotam) || 0;
+      const newNotams = notams
+        .map((message, index) => ({ message, id: index + 1 }))
+        .slice(lastSeenNotam);
+
+      return res.send(JSON.stringify(newNotams)).end();
     });
 
     this.app.post('/api/rename', (req, res) => {

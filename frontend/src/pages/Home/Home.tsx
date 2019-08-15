@@ -10,6 +10,7 @@ import LayersIcon from '@material-ui/icons/Layers';
 import Map from 'organisms/Map';
 import Panel from 'organisms/Panel';
 import KmlLoaderOverlay from 'organisms/KmlLoaderOverlay';
+import Notams from 'organisms/Notams';
 import { decodeConfig } from 'services/helpers';
 
 import { MapCanvasWrapper, ButtonsRow } from './Home.style';
@@ -32,7 +33,7 @@ const Home: React.FunctionComponent = () => {
 
   return (
     <React.Fragment>
-      <MapCanvasWrapper id="map-canvas-wrapper" className={classnames({ shrinked: panelOpen })}>
+      <MapCanvasWrapper className={classnames({ shrinked: panelOpen })}>
         <Map />
         {!staticMode && (
           <ButtonsRow>
@@ -57,6 +58,7 @@ const Home: React.FunctionComponent = () => {
       {!staticMode && (
         <KmlLoaderOverlay visible={kmlOverlayVisible} onClose={() => setKmlOverlayVisible(false)} />
       )}
+      {!staticMode && <Notams />}
     </React.Fragment>
   );
 };

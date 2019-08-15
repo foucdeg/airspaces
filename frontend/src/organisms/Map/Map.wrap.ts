@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { fetchPlanes } from 'redux/Planes/actions';
 import { setActivePlane } from 'redux/ActivePlane/actions';
+
 import Map from './Map';
 import { Dispatch } from 'redux';
 import { RootState } from 'redux/types';
