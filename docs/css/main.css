@@ -13,7 +13,7 @@ body {
 }
 
 .demo-frame::after {
-  box-shadow: inset 0px -3px 7px 0px rgba(0,0,0,0.1);
+  box-shadow: inset 0px -3px 7px 0px rgba(0, 0, 0, 0.1);
   position: absolute;
   bottom: 0;
   left: 0;
@@ -27,7 +27,7 @@ body {
   margin: calc(50vh - 12rem) auto 8rem auto;
   padding: 1.5rem;
   height: 8rem;
-  box-shadow: 3px 3px 7px 0px rgba(0,0,0,0.1);
+  box-shadow: 3px 3px 7px 0px rgba(0, 0, 0, 0.1);
   max-width: 45rem;
   background: white;
 }
@@ -45,11 +45,11 @@ body {
 .demo-overlay .gotoapp svg {
   display: block;
   margin: 0px auto;
-  fill: #2CB7CD;
+  fill: #2cb7cd;
 }
 
 .page-body {
-  box-shadow: 3px -3px 7px 0px rgba(0,0,0,0.1);
+  box-shadow: 3px -3px 7px 0px rgba(0, 0, 0, 0.1);
   background-color: white;
   max-width: 45rem;
   margin: 0px auto;
@@ -57,7 +57,7 @@ body {
 }
 
 h1 {
-  color: #00A651;
+  color: #00a651;
   font-size: 3rem;
   margin-bottom: 0.75rem;
   font-weight: bold;
@@ -71,7 +71,7 @@ h3 {
   letter-spacing: 1px;
   text-transform: uppercase;
   font-weight: bold;
-  color: #00A651;
+  color: #00a651;
   margin-bottom: 2rem;
   margin-top: 3rem;
 }
@@ -96,20 +96,22 @@ p {
   border-bottom: 1px solid #888;
 }
 
-.versions th, td {
+.versions th,
+td {
   padding: 0.5rem;
   vertical-align: middle;
 }
 
 .versions td.ok {
-  color: #00A651;
+  color: #00a651;
 }
 
 .versions td.ko {
   color: #e43030;
 }
 
-.versions th:not(:first-child), .versions td:not(:first-child) {
+.versions th:not(:first-child),
+.versions td:not(:first-child) {
   border-left: 1px solid #888;
 }
 
@@ -117,19 +119,31 @@ p {
   cursor: pointer;
 }
 
-
 .versions th:not(:first-child):hover {
   background: #eee;
 }
 
-
 @media (max-width: 720px) {
-  body{ font-size: 12px; }
-  h1 { font-size: 2rem; }
-  h2 { font-size: 1rem; margin-bottom: 1.5rem; }
-  h3 { margin-top: 2rem; margin-bottom: 1.5rem; }
-  p { line-height: 1rem; }
-  a.gotoapp { display: none; }
+  body {
+    font-size: 12px;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  h3 {
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  p {
+    line-height: 1rem;
+  }
+  a.gotoapp {
+    display: none;
+  }
 
   .demo-overlay .titles p {
     margin-bottom: 0;
@@ -142,7 +156,7 @@ p {
   a.gotoapp-small svg {
     position: relative;
     top: 3px;
-    fill: #2CB7CD;
+    fill: #2cb7cd;
   }
 }
 
@@ -169,16 +183,16 @@ strong {
 }
 
 pre {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
   max-width: 100%;
   overflow: scroll;
   padding: 0.5rem;
-  box-shadow: inset 0px 3px 7px 0px rgba(0,0,0,0.1);
+  box-shadow: inset 0px 3px 7px 0px rgba(0, 0, 0, 0.1);
   background: #f4f6f6;
 }
 
 a {
-  color: #2CB7CD;
+  color: #2cb7cd;
   text-decoration: none;
 }
 

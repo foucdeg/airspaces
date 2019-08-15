@@ -39,6 +39,30 @@ interface PositionalLeafletMapProps {
   bounds?: Leaflet.LatLngBounds;
 }
 
+const disableTransition = () => {
+  document
+    .querySelectorAll('.leaflet-marker-pane img')
+    .forEach(icon => icon.classList.add('no-transition'));
+};
+
+const enableTransition = () => {
+  setTimeout(() => {
+    document
+      .querySelectorAll('.leaflet-marker-pane img')
+      .forEach(icon => icon.classList.remove('no-transition'));
+  }, 200);
+};
+
+const handleVisibilityChange: EventListener = (event: Event) => {
+  if (document.hidden) {
+    disableTransition();
+  } else {
+    enableTransition();
+  }
+};
+
+window.addEventListener('visibilitychange', handleVisibilityChange);
+
 const Map: React.FunctionComponent<Props> = ({
   planes,
   fetchPlanes,
@@ -98,7 +122,13 @@ const Map: React.FunctionComponent<Props> = ({
       ref={mapElement}
       {...positionalProps}
       ondragstart={onPlaneLeave}
-      onzoomend={(event: Leaflet.LeafletEvent) => setZoom(event.target._zoom)}
+      onmovestart={disableTransition}
+      onmoveend={enableTransition}
+      onzoomstart={disableTransition}
+      onzoomend={(event: Leaflet.LeafletEvent) => {
+        enableTransition();
+        setZoom(event.target._zoom);
+      }}
     >
       <LayersControl position="bottomleft">
         <LayersControl.BaseLayer name="OpenStreetMap" checked>

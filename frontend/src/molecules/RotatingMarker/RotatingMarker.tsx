@@ -47,12 +47,6 @@ class RotatingMarker extends MapLayer<MarkerProps & RotatingMarkerProps> {
       // @ts-ignore
       (this.leafletElement as LeafletMarker).setRotationAngle(toProps.rotationAngle);
     }
-
-    // @ts-ignore
-    if (this.leafletElement._icon) {
-      // @ts-ignore
-      this.leafletElement._icon.style.transition = `all ${PERIOD - 10}ms linear`;
-    }
   }
 }
 

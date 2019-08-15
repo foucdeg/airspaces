@@ -149,3 +149,11 @@ div[data-reactroot],
   overflow: hidden;
   font-family: Arial, sans-serif;
 }
+
+img.leaflet-marker-icon {
+  transition: all 990ms linear;
+}
+
+img.leaflet-marker-icon.no-transition {
+  transition: none;
+}
