@@ -51,6 +51,7 @@ class UDPListener {
       return (speedInMS * 3600) / 1852;
     } catch (e) {
       console.error('Error in calculateSpeed', from, to, e);
+      return 0;
     }
   }
 
