@@ -44,10 +44,14 @@ class UDPListener {
 
   static calculateSpeed(from: PlaneData, to: PlaneData) {
     if (!from || !to) return 0;
-    const distanceInMeters = geolib.getDistance(from, to) || 0;
-    const deltaTInMilliseconds = to.date - from.date;
-    const speedInMS = (1000 * distanceInMeters) / deltaTInMilliseconds;
-    return (speedInMS * 3600) / 1852;
+    try {
+      const distanceInMeters = geolib.getDistance(from, to) || 0;
+      const deltaTInMilliseconds = to.date - from.date;
+      const speedInMS = (1000 * distanceInMeters) / deltaTInMilliseconds;
+      return (speedInMS * 3600) / 1852;
+    } catch (e) {
+      console.error('Error in calculateSpeed', from, to, e);
+    }
   }
 
   static calculateBearing(from: PlaneData, to: PlaneData) {
@@ -132,7 +136,9 @@ class UDPListener {
 
   cleanOutdatedPlanes() {
     Object.keys(this.planeList).forEach(identifier => {
-      const latestPositionDate = this.planeList[identifier].positionHistory[0].date;
+      const positionHistory = this.planeList[identifier].positionHistory;
+      if (!positionHistory.length) return;
+      const latestPositionDate = positionHistory[0].date;
       // if latest known position is older than 60s
       if (Date.now() - latestPositionDate > 60000) {
         // assume they crashed and call 911
