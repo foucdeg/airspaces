@@ -23,7 +23,8 @@ const EditableText: React.FunctionComponent<Props> = ({ value, onSubmit }) => {
     e.preventDefault();
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => setCurrentValue(e.target.value);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setCurrentValue(e.target.value.substring(0, 64));
 
   const handleReset = () => {
     setEditing(false);

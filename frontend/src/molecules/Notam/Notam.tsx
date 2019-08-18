@@ -23,11 +23,11 @@ const Notam: React.FC<Props> = ({ notam, onClose }) => (
   >
     <StyledSnackbarContent
       message={`NOTAM: ${notam.message}`}
-      action={[
+      action={
         <IconButton onClick={() => onClose(notam.id)}>
           <CloseIcon />
-        </IconButton>,
-      ]}
+        </IconButton>
+      }
     />
   </Snackbar>
 );

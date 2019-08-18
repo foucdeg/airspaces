@@ -11,7 +11,7 @@ const reducer = (state: NotamsState = initialState, action: AnyAction) => {
     case actions.FETCH_NOTAMS_RESULT:
       return action.payload.notams;
     case actions.DISMISS_NOTAM:
-      document.cookie = `lastSeenNotam=${action.payload.notamId}`;
+      document.cookie = `lastSeenNotam=${action.payload.notamId};max-age=31536000`;
       return state.filter(notam => notam.id !== action.payload.notamId);
     default:
       return state;

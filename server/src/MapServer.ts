@@ -55,7 +55,7 @@ class MapServer {
       if (!(req.body.name && req.body.identifier && this.planeList[req.body.identifier])) {
         return res.sendStatus(400);
       }
-      this.planeList[req.body.identifier].name = req.body.name;
+      this.planeList[req.body.identifier].name = req.body.name.substring(0, 64);
       return res.sendStatus(201);
     });
 
