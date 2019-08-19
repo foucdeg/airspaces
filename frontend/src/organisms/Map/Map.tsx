@@ -159,19 +159,21 @@ const Map: React.FunctionComponent<Props> = ({
           </LayersControl.Overlay>
         ))}
       </LayersControl>
-      {planes.map(plane => (
-        <React.Fragment key={plane.identifier}>
-          <RotatingMarker
-            position={plane.position}
-            icon={BUILT_ICONS[plane.icon]}
-            rotationAngle={plane.heading}
-            rotationOrigin="initial"
-          >
-            <PlanePopup aircraft={plane} />
-          </RotatingMarker>
-          {plane.isTraceActive && <Trace {...POLYLINE_OPTIONS} positions={plane.path} />}
-        </React.Fragment>
-      ))}
+      {planes
+        .filter(plane => plane.position[0] && plane.position[1])
+        .map(plane => (
+          <React.Fragment key={plane.identifier}>
+            <RotatingMarker
+              position={plane.position}
+              icon={BUILT_ICONS[plane.icon]}
+              rotationAngle={plane.heading}
+              rotationOrigin="initial"
+            >
+              <PlanePopup aircraft={plane} />
+            </RotatingMarker>
+            {plane.isTraceActive && <Trace {...POLYLINE_OPTIONS} positions={plane.path} />}
+          </React.Fragment>
+        ))}
     </LeafletMap>
   );
 };
