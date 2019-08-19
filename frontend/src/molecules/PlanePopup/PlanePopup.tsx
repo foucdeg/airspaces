@@ -13,8 +13,9 @@ const PlanePopup: React.FunctionComponent<Props> = ({ aircraft }) => (
     <PopupContent>
       <strong>{aircraft.name}</strong>
       <br />
-      {aircraft.altitude.toLocaleString('en-us', { maximumFractionDigits: 0 })} ft &middot; &nbsp;
-      {aircraft.heading.toLocaleString('en-us', { maximumFractionDigits: 0 })} &deg; <br />
+      {(aircraft.altitude || 0).toLocaleString('en-us', { maximumFractionDigits: 0 })} ft &middot;
+      &nbsp;
+      {(aircraft.heading || 0).toLocaleString('en-us', { maximumFractionDigits: 0 })} &deg; <br />
       GS {(aircraft.speed || 0).toLocaleString('en-us', { maximumFractionDigits: 0 })} kts <br />
       {formatLatLon(aircraft.position)}
     </PopupContent>
