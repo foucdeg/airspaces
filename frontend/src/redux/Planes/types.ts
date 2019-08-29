@@ -1,5 +1,3 @@
-import { IconName } from 'src/assets';
-
 export interface Position {
   lat: number;
   lng: number;
@@ -12,7 +10,7 @@ export interface Aircraft {
   name: string;
   position: [number, number];
   altitude: number;
-  icon: IconName;
+  icon: string;
   speed: number;
   heading: number;
   isTraceActive: boolean;
@@ -27,7 +25,7 @@ export interface APIAircraft {
   altitude: number;
   speed: number;
   heading: number;
-  icon: IconName;
+  icon: string;
 }
 export type APIAircraftSet = {
   [identifier: string]: APIAircraft;

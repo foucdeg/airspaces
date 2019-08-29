@@ -1,10 +1,10 @@
 /* eslint no-underscore-dangle: ["error", { "allow": ["_zoom"] }] */
 
 import React, { useRef, useEffect, useState } from 'react';
-import { Map as LeafletMap, LayersControl, TileLayer, GeoJSON } from 'react-leaflet';
-import Leaflet from 'leaflet';
+import { Map as LeafletMap, LayersControl, TileLayer, GeoJSON, Marker } from 'react-leaflet';
+import Leaflet, { icon } from 'leaflet';
 
-import { POLYLINE_OPTIONS, BUILT_ICONS, PERIOD, INITIAL_ZOOM } from 'services/constants';
+import { POLYLINE_OPTIONS, LEAFLET_ICONS, PERIOD, INITIAL_ZOOM } from 'services/constants';
 import { getPlanesBounds, decodeConfig } from 'services/helpers';
 import Trace from 'molecules/Trace';
 import RotatingMarker from 'molecules/RotatingMarker';
@@ -38,6 +38,10 @@ interface PositionalLeafletMapProps {
   center?: [number, number];
   bounds?: Leaflet.LatLngBounds;
 }
+
+const iconRotates = (iconName: string) => {
+  return iconName.indexOf('_nr') === -1;
+};
 
 const disableTransition = () => {
   document
@@ -163,14 +167,20 @@ const Map: React.FunctionComponent<Props> = ({
         .filter(plane => plane.position[0] && plane.position[1])
         .map(plane => (
           <React.Fragment key={plane.identifier}>
-            <RotatingMarker
-              position={plane.position}
-              icon={BUILT_ICONS[plane.icon]}
-              rotationAngle={plane.heading}
-              rotationOrigin="initial"
-            >
-              <PlanePopup aircraft={plane} />
-            </RotatingMarker>
+            {iconRotates(plane.icon) ? (
+              <RotatingMarker
+                position={plane.position}
+                icon={LEAFLET_ICONS[plane.icon]}
+                rotationAngle={plane.heading}
+                rotationOrigin="initial"
+              >
+                <PlanePopup aircraft={plane} />
+              </RotatingMarker>
+            ) : (
+              <Marker position={plane.position} icon={LEAFLET_ICONS[plane.icon]}>
+                <PlanePopup aircraft={plane} />
+              </Marker>
+            )}
             {plane.isTraceActive && <Trace {...POLYLINE_OPTIONS} positions={plane.path} />}
           </React.Fragment>
         ))}

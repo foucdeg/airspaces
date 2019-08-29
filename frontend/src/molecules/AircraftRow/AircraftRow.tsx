@@ -15,7 +15,6 @@ import ShowChartsIcon from '@material-ui/icons/ShowChart';
 import ClearIcon from '@material-ui/icons/Clear';
 
 import EditableText from 'molecules/EditableText';
-import { ICONS } from 'services/constants';
 import { Aircraft } from 'redux/Planes/types';
 
 import { StyledRow } from './AircraftRow.style';
@@ -64,7 +63,7 @@ const PlaneRow: React.FunctionComponent<Props> = ({
       className={classnames({ followed: isFollowed })}
     >
       <ListItemAvatar>
-        <Avatar onClick={onPlaneIconChange} src={ICONS[icon]} />
+        <Avatar onClick={onPlaneIconChange} src={`/icons/${icon}`} />
       </ListItemAvatar>
       <ListItemText
         primary={<EditableText value={name} onSubmit={onPlaneRename} />}

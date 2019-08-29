@@ -24,7 +24,7 @@ server {
         }
 
         location / {
-                root /home/fouc/airspaces/current;
+                root /home/fouc/airspaces/{{ item.name }}/build;
                 try_files $uri $uri/ =404;
         }
 }

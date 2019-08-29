@@ -18,9 +18,9 @@ const reducer = (state: PlanesState = initialState, action: AnyAction) => {
     case actions.FETCH_PLANES_RESULT:
       return mergePlaneData(state, action.planes);
     case actions.TOGGLE_TRACE:
-      return togglePlaneTrace(state, action.key);
+      return togglePlaneTrace(action.key, state);
     case actions.CLEAR_TRACE:
-      return clearPlaneTrace(state, action.key);
+      return clearPlaneTrace(action.key, state);
     case actions.RENAME_PLANE:
       return renamePlane(state, action.key, action.name);
     case actions.CHANGE_ICON:

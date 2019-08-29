@@ -1,8 +1,14 @@
 import Leaflet from 'leaflet';
-import { default as ICONS, IconName } from '../assets';
 
 export const PERIOD = 1000;
 export const INITIAL_ZOOM = 8;
+
+const defaultAvailableIcons = ['Airliner.svg', 'Civil.svg', 'Fighter.svg', 'Helicopter.svg'];
+
+const availableIconsEnvVar = process.env.REACT_APP_AVAILABLE_ICONS;
+export const ICON_NAMES = availableIconsEnvVar
+  ? availableIconsEnvVar.split(',')
+  : defaultAvailableIcons;
 
 export const POLYLINE_OPTIONS = {
   outlineWidth: 1,
@@ -17,13 +23,11 @@ export const POLYLINE_OPTIONS = {
   max: 50000,
 };
 
-export { ICONS };
-
-export const BUILT_ICONS = Object.assign(
+export const LEAFLET_ICONS = Object.assign(
   {},
-  ...Object.keys(ICONS).map(iconName => ({
+  ...ICON_NAMES.map(iconName => ({
     [iconName]: Leaflet.icon({
-      iconUrl: ICONS[iconName as IconName],
+      iconUrl: `/icons/${iconName}`,
       iconSize: [30, 30],
     }),
   })),

@@ -2,7 +2,7 @@
 import Leaflet from 'leaflet';
 import { Position, Aircraft, APIAircraft, APIAircraftSet } from 'redux/Planes/types';
 import { PlanesState } from 'redux/Planes/reducer';
-import { IconName } from 'src/assets';
+import curry from 'lodash/curry';
 
 const DEVIATION_THRESHOLD = 0.1; // square seconds
 const FEET_IN_A_METER = 3.28;
@@ -23,7 +23,7 @@ const BASE_PLANE = {
   heading: 0,
   position: [0, 0] as [number, number],
   altitude: 0,
-  icon: 'airliner' as IconName,
+  icon: 'airliner',
   identifier: '',
 };
 
@@ -133,50 +133,57 @@ export function mergePlaneData(oldState: PlanesState, newPlanesData: APIAircraft
   return newState;
 }
 
-export function togglePlaneTrace(oldState: PlanesState, identifier: string) {
-  const newState = [...oldState];
-
-  oldState.forEach((plane, index) => {
-    if (plane.identifier === identifier) {
-      newState[index].isTraceActive = !plane.isTraceActive;
+export function applyChangeToPlane(
+  changeFunction: (plane: Aircraft) => Aircraft,
+  identifier: string,
+  oldState: Aircraft[],
+): Aircraft[] {
+  return oldState.map(aircraft => {
+    if (aircraft.identifier !== identifier) {
+      return aircraft;
     }
+    return changeFunction(aircraft);
   });
-
-  return newState;
 }
 
-export function clearPlaneTrace(oldState: PlanesState, identifier: string) {
-  const newState = [...oldState];
+const curriedApplyChangeToPlane = curry(applyChangeToPlane);
 
-  oldState.forEach((plane, index) => {
-    if (plane.identifier === identifier) {
-      newState[index].path = [];
-    }
-  });
+export const togglePlaneTrace: (
+  identifier: string,
+  oldState: Aircraft[],
+) => Aircraft[] = curriedApplyChangeToPlane(aircraft => ({
+  ...aircraft,
+  isTraceActive: !aircraft.isTraceActive,
+}));
 
-  return newState;
-}
+export const clearPlaneTrace: (
+  identifier: string,
+  oldState: Aircraft[],
+) => Aircraft[] = curriedApplyChangeToPlane(aircraft => ({
+  ...aircraft,
+  path: [],
+}));
 
-export function renamePlane(oldState: PlanesState, identifier: string, name: string) {
-  const newState = [...oldState];
+export const renamePlane = (
+  oldState: PlanesState,
+  identifier: string,
+  name: string,
+): Aircraft[] => {
+  return curriedApplyChangeToPlane(aircraft => ({
+    ...aircraft,
+    name,
+  }))(identifier, oldState);
+};
 
-  oldState.forEach((plane, index) => {
-    if (plane.identifier === identifier) {
-      newState[index].name = name;
-    }
-  });
-  return oldState;
-}
-
-export function changePlaneIcon(oldState: PlanesState, identifier: string, icon: IconName) {
-  const newState = Array.from(oldState);
-
-  oldState.forEach((plane, index) => {
-    if (plane.identifier === identifier) {
-      newState[index].icon = icon;
-    }
-  });
-  return oldState;
+export function changePlaneIcon(
+  oldState: PlanesState,
+  identifier: string,
+  icon: string,
+): Aircraft[] {
+  return curriedApplyChangeToPlane(aircraft => ({
+    ...aircraft,
+    icon,
+  }))(identifier, oldState);
 }
 
 export function formatLatLon([latitude, longitude]: [number, number]) {

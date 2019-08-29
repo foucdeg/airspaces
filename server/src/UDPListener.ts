@@ -6,6 +6,13 @@ import { PlaneList, PlaneData } from 'main';
 
 const HISTORY_DURATION = 5000;
 
+const defaultAvailableIcons = ['Airliner.svg', 'Civil.svg', 'Fighter.svg', 'Helicopter.svg'];
+
+const availableIconsEnvVar = process.env.REACT_APP_AVAILABLE_ICONS;
+const availableIcons = availableIconsEnvVar
+  ? availableIconsEnvVar.split(',')
+  : defaultAvailableIcons;
+
 const emptyPlaneData: PlaneData = ({
   longitude: null,
   latitude: null,
@@ -98,7 +105,7 @@ class UDPListener {
 
     if (!newPlaneInfo.positionHistory) newPlaneInfo.positionHistory = [];
     if (!newPlaneInfo.name) newPlaneInfo.name = identifier;
-    if (!newPlaneInfo.icon) newPlaneInfo.icon = 'airliner';
+    if (!newPlaneInfo.icon) newPlaneInfo.icon = availableIcons[0];
     if (!newPlaneInfo.heading) newPlaneInfo.heading = 0;
     if (!newPlaneInfo.speed) newPlaneInfo.speed = 0;
 

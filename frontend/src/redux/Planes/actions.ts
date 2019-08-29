@@ -1,4 +1,4 @@
-import { ICONS } from 'services/constants';
+import { ICON_NAMES } from 'services/constants';
 import { Aircraft, APIAircraftSet } from './types';
 
 export const FETCH_PLANES_REQUEST = 'FETCH_PLANES_REQUEST';
@@ -38,9 +38,8 @@ export function clearTrace(plane: Aircraft) {
 }
 
 function nextIcon(currentIcon: string) {
-  const allIcons = Object.keys(ICONS);
-  const currentIndex = allIcons.indexOf(currentIcon);
-  return allIcons[(currentIndex + 1) % allIcons.length];
+  const currentIndex = ICON_NAMES.indexOf(currentIcon);
+  return ICON_NAMES[(currentIndex + 1) % ICON_NAMES.length];
 }
 
 export function changeIcon(plane: Aircraft) {
