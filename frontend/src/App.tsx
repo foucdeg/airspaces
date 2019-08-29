@@ -8,9 +8,7 @@ import { Route } from 'react-router';
 import { Store } from 'redux';
 import { Persistor } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
-import { addLocaleData, IntlProvider } from 'react-intl';
-import en from 'react-intl/locale-data/en';
-import fr from 'react-intl/locale-data/fr';
+import { IntlProvider } from 'react-intl';
 
 import AppCrashFallback from './components/AppCrashFallback';
 import ErrorBoundary from './components/ErrorBoundary';
@@ -22,8 +20,6 @@ import enMessages from 'translations/en.json';
 const locales = {
   en: flattenMessages(enMessages),
 };
-
-addLocaleData([...fr, ...en]);
 
 interface Props {
   history: History;
