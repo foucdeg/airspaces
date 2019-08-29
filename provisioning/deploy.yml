@@ -17,33 +17,26 @@
         depth: 1
       with_items: "{{ airspaces }}"
 
-    - block:
-        - name: Install dependencies
-          command: "yarn"
-          args:
-            chdir: "/tmp/{{ item.name }}/frontend"
-          with_items: "{{ airspaces }}"
+    - name: Install dependencies
+      command: "yarn"
+      args:
+        chdir: "/tmp/{{ item.name }}/frontend"
+      with_items: "{{ airspaces }}"
 
-        - name: Build the repo
-          command: "yarn build"
-          args:
-            chdir: "/tmp/{{ item.name }}/frontend"
-            creates: "/tmp/{{ item.name }}/frontend/build"
-          environment:
-            REACT_APP_AVAILABLE_ICONS: "{{ item.available_icons | join(',') }}"
-          with_items: "{{ airspaces }}"
+    - name: Build the repo
+      command: "yarn build"
+      args:
+        chdir: "/tmp/{{ item.name }}/frontend"
+        creates: "/tmp/{{ item.name }}/frontend/build"
+      environment:
+        REACT_APP_AVAILABLE_ICONS: "{{ item.available_icons | join(',') }}"
+        REACT_APP_ENV: production
+      with_items: "{{ airspaces }}"
 
-        - name: Move the built files
-          copy:
-            src: "/tmp/{{ item.name }}/frontend/build"
-            dest: "/home/fouc/airspaces/{{ item.name }}"
-            remote_src: true
-            mode: preserve
-          with_items: "{{ airspaces }}"
-
-      always:
-        - name: Remove the temp build directories
-          file:
-            path: "/tmp/{{ item.name }}"
-            state: absent
-          with_items: "{{ airspaces }}"
+    - name: Move the built files
+      copy:
+        src: "/tmp/{{ item.name }}/frontend/build"
+        dest: "/home/fouc/airspaces/{{ item.name }}"
+        remote_src: true
+        mode: preserve
+      with_items: "{{ airspaces }}"

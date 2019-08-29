@@ -35,10 +35,10 @@
   },
   "scripts": {
     "start": "REACT_APP_ENV=local react-app-rewired start",
-    "build": "env-cmd .env.${REACT_APP_ENV} react-app-rewired build",
+    "build": "env-cmd -f .env.${REACT_APP_ENV} react-app-rewired build",
     "test": "react-app-rewired test --maxWorkers=4",
     "eject": "react-app-rewired eject",
-    "analyze": "env-cmd .env.${REACT_APP_ENV} react-app-rewired build --analyze-bundle",
+    "analyze": "env-cmd -f .env.${REACT_APP_ENV} react-app-rewired build --analyze-bundle",
     "test:coverage": "npm run test -- --coverage",
     "generate": "plop --plopfile scripts/generators/index.js",
     "lint": "eslint 'src/**/*.{js,ts,tsx}'",
