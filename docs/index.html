@@ -81,19 +81,17 @@ layout: default
     <li>your custom map background or features</li>
     <li>feel free to ask for anything else, it might be easy for me to do.</li>
     </ul>
-  <p>Prices start at 5 EUR monthly .
+  <p>Private airspaces are free, but donations are welcome.
     Email me at <a href="mailto:foucauld.degeorges@gmail.com">foucauld.degeorges@gmail.com</a> if interested.
   </p>
 </div>
 <div class="instructions" id="instructions-self-hosted">
   <h3 💪>Self-host an Airspace</h3>
   <p>The easiest way to self-host an Airspace is to run the <a href="https://hub.docker.com/r/foucdeg/airspaces">Docker image</a>:</p>
-  <pre>docker run -d -p "9000:9000" -p "49003:49003/udp" foucdeg/airspaces</pre>
+  <pre>docker run -d -p "9000:9000" -p "49003:49003/udp" foucdeg/airspaces:api</pre>
   <p>The Airspaces API will be available on port <strong>9000</strong> and the X-Plane port is <strong>49003</strong>.
-    The client will soon be integrated in the Docker image; for now, you can build it from <a href="https://github.com/foucdeg/x-plane-map-client" target="_blank">its Github repository</a>.<p>
-  <p>If you cannot use Docker, you can run the <a href="https://github.com/foucdeg/x-plane-map-api" target="_blank">Node.js backend</a>
-    and serve the <a href="https://github.com/foucdeg/x-plane-map-client" target="_blank">ReactJS client</a>
-    in your own preferred way, as they are both open source.</a>
+    The client will soon be integrated in the Docker image; for now, you can build it from the frontend/ subfolder.<p>
+  <p>If you cannot use Docker, you can run the Node.js backend and serve the ReactJS client in your own preferred way, as they are both open source.
   </p>
 </div>
 <div class="instructions" id="instructions-desktop">
@@ -109,7 +107,7 @@ layout: default
 
 <p>If you cannot get the map to work, email me at <a href="mailto:foucauld.degeorges@gmail.com">foucauld.degeorges@gmail.com</a>.</p>
 
-</p>For any bug reports, leave an <a target="_blank" href="https://github.com/foucdeg/x-plane-map-electron/issues">issue on Github</a>.</p>
+</p>For any bug reports, leave an <a target="_blank" href="https://github.com/foucdeg/airspaces/issues">issue on Github</a>.</p>
 
 <h3>Helping out</h3>
 
@@ -117,13 +115,9 @@ layout: default
 
 <ul>
   <li>by sending me some feedback or ideas via <a target="_blank" href="mailto:foucauld.degeorges@gmail.com">email</a>
-    or <a target="_blank" href="https://github.com/foucdeg/x-plane-map-electron/issues">Github issue</a>,
+    or <a target="_blank" href="https://github.com/foucdeg/airspaces/issues">Github issue</a>,
   </li>
-  <li>if you have coding skills, by contributing with code on Github:
-    <ul>
-      <li><a href="https://github.com/foucdeg/x-plane-map-client" target="_blank">Client repository (ReactJS)</a></li>
-      <li><a href="https://github.com/foucdeg/x-plane-map-api" target="_blank">Server repository (NodeJS)</a></li>
-    </ul>
+  <li>if you have coding skills, by contributing with code on <a href="https://github.com/foucdeg/airspaces" target="_blank">Github</a>,
   </li>
   <li>by contributing with any amount of money to my development costs (mainly application certificates and server costs):
     <ul>
@@ -141,5 +135,3 @@ layout: default
 <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" style="margin-top: 18px;" />
 <img src="https://www.paypal.com/en_FR/i/scr/pixel.gif" width="1" height="1" />
 </form>
-
-
