@@ -8,7 +8,7 @@ const HISTORY_DURATION = 5000;
 
 const defaultAvailableIcons = ['Airliner.svg', 'Civil.svg', 'Fighter.svg', 'Helicopter.svg'];
 
-const availableIconsEnvVar = process.env.REACT_APP_AVAILABLE_ICONS;
+const availableIconsEnvVar = process.env.AVAILABLE_ICONS;
 const availableIcons = availableIconsEnvVar
   ? availableIconsEnvVar.split(',')
   : defaultAvailableIcons;
@@ -85,7 +85,7 @@ class UDPListener {
 
     this.server.on('message', (msg, rinfo) => {
       const data = UDPListener.readMessage(msg);
-      if (!data || !data.transponder) return;
+      if (!data || !data.transponder || !data.latitude || !data.longitude) return;
       const identifier = `${data.transponder} (${rinfo.address})`;
       this.updatePosition(identifier, data);
     });

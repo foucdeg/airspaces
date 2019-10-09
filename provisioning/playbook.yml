@@ -34,7 +34,7 @@
           - "{{ item.web_port }}:9000"
           - "{{ item.udp_port }}:49003/udp"
         env:
-          AVAILABLE_ICONS: "{{ item.available_icons }}"
+          AVAILABLE_ICONS: "{{ item.available_icons | join(',') }}"
       with_items: "{{ airspaces }}"
 
     - name: include OVH credentials
