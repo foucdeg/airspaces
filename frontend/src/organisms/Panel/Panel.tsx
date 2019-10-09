@@ -2,11 +2,10 @@
 import React from 'react';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListSubheader from '@material-ui/core/ListSubheader';
 
 import AircraftRow from 'molecules/AircraftRow';
 import { Aircraft } from 'redux/Planes/types';
-import { StyledPanel } from './Panel.style';
+import { StyledPanel, Title } from './Panel.style';
 
 interface Props {
   activePlane: string | boolean | null;
@@ -28,7 +27,8 @@ const Panel: React.FunctionComponent<Props> = ({
   onPlaneSelect,
 }) => (
   <StyledPanel>
-    <List dense subheader={<ListSubheader>Active Aircraft</ListSubheader>}>
+    <Title>Active Aircraft ({planes.length})</Title>
+    <List dense>
       {planes.map(plane => (
         <AircraftRow
           plane={plane}
