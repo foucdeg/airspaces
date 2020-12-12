@@ -4,6 +4,8 @@
 
 **Airspaces** is a web and desktop companion app to [X-Plane](https://www.x-plane.com/), a flight simulator. It provides an online map where you can track your plane flying, along with your friends, or the whole world of X-Plane simmers!
 
+⚠️ Airspaces is no longer maintained. Il will keep working as long as it costs minimal effort to me. Technical support is mostly not provided anymore. ⚠️
+
 ## General information
 
 ### Links
@@ -13,7 +15,7 @@
 
 ### Can I help you?
 
-If you have a bug report, a feature request, or just any question, you can either [create an issue](https://github.com/foucdeg/airspaces/issues) or send me an email at foucauld.degeorges@gmail.com .
+If you have a bug report, a feature request, or just any question, you can either [create an issue on Github](https://github.com/foucdeg/airspaces/issues).
 
 ### Helping out
 
@@ -22,7 +24,6 @@ Thanks for your interest! Here are a few ways to help me improve Airspaces:
 - by reporting bugs of feature requests here in the issues of via email - see above
 - by contributing with code, if you are a developer. The technologies involved are Node.JS, ReactJS and Docker. PRs are welcome. See the "Development" section below.
 - if you wish, by donating a small amount of money via Paypal: [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=32RBLTRY2Q8CL&currency_code=EUR&source=url)
-- or if you really are a huge fan, I also have a [Patreon page](https://www.patreon.com/bePatron?u=3455266) where you can be my patron and sponsor me with a monthly sum.
 
 
 ## Development
